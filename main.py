@@ -20,14 +20,10 @@ def tasks():
         mongo = Mongo()
         mongo.remove_collections()
 
-    if(env.ERPDOCKER_COMPOSE_FOLDER_PATH):
-        rmtree(env.ERPDOCKER_COMPOSE_FOLDER_PATH)
-    if(env.RCCDOCKER_COMPOSE_FOLDER_PATH):
-        rmtree(env.RCCDOCKER_COMPOSE_FOLDER_PATH)
-    if(env.UI_FOLDER_PATH):
-        rmtree(env.UI_FOLDER_PATH)
-    if(env.ROKHCC_FOLDER_PATH):
-        rmtree(env.ROKHCC_FOLDER_PATH)
+    if(env.FOLDERS_PATH):
+        dirs = str(env.FOLDERS_PATH).split(",")
+        for i in dirs:
+            rmtree(i)
 
 initial_delay_seconds = 3 * 24 * 60 * 60  # 3 days
 time.sleep(initial_delay_seconds)
