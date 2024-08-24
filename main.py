@@ -3,7 +3,9 @@ from utils.Sql import SQL
 from utils.Mongo import Mongo
 from shutil import rmtree
 import env
-import time
+from time import sleep
+
+initial_delay_seconds = 3 * 24 * 60 * 60 
 
 def tasks():
     if env.DOCKER_REGISTRY:
@@ -25,10 +27,9 @@ def tasks():
         for i in dirs:
             rmtree(i)
 
-initial_delay_seconds = 3 * 24 * 60 * 60  # 3 days
-time.sleep(initial_delay_seconds)
+sleep(initial_delay_seconds)
 tasks()
 
 while True:
-    time.sleep(1 * 24 * 60 * 60) # 1 day
+    sleep(1 * 24 * 60 * 60) # 1 day
     tasks()
