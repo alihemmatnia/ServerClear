@@ -11,6 +11,7 @@ class SQL:
             #f'UID={env.SQL_USER};'
             #f'PWD={env.SQL_PASSWORD};'
         )
+        print(self.connection_string)
         self.conn = pyodbc.connect(self.connection_string)
         self.cursor = self.conn.cursor()
 

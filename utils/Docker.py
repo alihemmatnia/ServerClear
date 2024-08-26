@@ -1,5 +1,6 @@
 import docker
 import env
+import subprocess
 
 class Docker:
     def __init__(self) -> None:
@@ -28,7 +29,8 @@ class Docker:
 
     def logout(self):
         try:
-            self.client.api.logout(self.registry) 
+            command = ["docker", "logout", self.registry]
+            subprocess.run(command, capture_output=True, text=True)
             print("Successfully logged out of Docker")
         except docker.errors.APIError as e:
             print(f"API Error: {str(e)}")

@@ -22,7 +22,7 @@ def tasks():
         mongo = Mongo()
         mongo.remove_collections()
 
-    if(env.FOLDERS_PATH):
+    if env.FOLDERS_PATH:
         dirs = str(env.FOLDERS_PATH).split(",")
         for i in dirs:
             rmtree(i)
